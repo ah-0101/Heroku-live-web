@@ -1,0 +1,19 @@
+extends layout
+
+
+block content
+    div(class="authCtn")
+        h1(class="head")=title
+        if errors
+            each error in errors
+                ul
+                    li.errors=error
+    form(id="signup" action="/users/login",method="post")
+        div(class="space")
+            input(type="email",name="email",required, placeholder="Email", class="authInp")
+        div(class="space")
+            input(type="password",name='password',required, placeholder="Password", class="authInp")
+            input(type="hidden",name="_csrf",value=csrfToken)
+        div(class="space login_buttons_div")
+            button(type="submit" class="authBtn") Log in
+            button(type="submit" class="authBtn" id='guest_login' name='guest_login' value='true') Log in as Guest
